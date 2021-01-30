@@ -7,7 +7,7 @@ const path = require("path");
 const app = express();
 
 // Settings
-app.set("port", 3000);
+app.set("port", 3001);
 
 // Middlewares
 app.use(morgan("dev"));
@@ -20,6 +20,12 @@ const storage = multer.diskStorage({
 app.use(multer({ storage }).single("image"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// Routes
+app.use(require("./routes/books"));
+
+// Static files
+app.use(express.static(path.join(__dirname, "public")));
 
 // Start the server
 app.listen(app.get("port"), () => {
