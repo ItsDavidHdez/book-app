@@ -1,4 +1,5 @@
-require("./styles/styles.css");
+import "./styles/styles.css";
+import BookService from "./services/BookService";
 
 document.getElementById("book-form").addEventListener("submit", (e) => {
   const title = document.getElementById("title").value;
@@ -6,6 +7,15 @@ document.getElementById("book-form").addEventListener("submit", (e) => {
   const isbn = document.getElementById("isbn").value;
   const image = document.getElementById("image").files;
 
-  console.log(title, author, isbn, image);
+  const formData = new FormData();
+  formData.append("image", image[0]);
+  formData.append("title", title);
+  formData.append("author", author);
+  formData.append("isbn", isbn);
+
+  const bookService = new BookService();
+  bookService.postBook(formData);
+  bookService.getBook();
+
   e.preventDefault();
 });
