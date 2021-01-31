@@ -12,7 +12,8 @@ class UI {
       div.className = "";
       div.innerHTML = `
         <div class="card m-2">
-            <div class="row">
+        <div class="card-body">
+          <div class="row">
                 <div class="col-md-4">
                     <img src="${book.imagePath}" alt="${
         book.title
@@ -20,7 +21,7 @@ class UI {
                 </div>
                 <div class="col-md-8">
                     <div class="card-block pd-2">
-                        <h4 class="card-title">${book.title}</h4>
+                        <h4 class="card-title pd-2">${book.title}</h4>
                         <p class="card-text">${book.author}</p>
                         <a href="#" class="btn btn-danger delete" _id="${
                           book._id
@@ -28,6 +29,7 @@ class UI {
                     </div>
                 </div>
             </div>
+        </div>
             <div class="card-footer">
                 ${format(book.created_at)}
             </div>
