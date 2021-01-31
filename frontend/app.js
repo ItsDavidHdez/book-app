@@ -1,5 +1,10 @@
 import "./styles/styles.css";
-import BookService from "./services/BookService";
+import UI from "./UI";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const ui = new UI();
+  ui.renderBooks();
+});
 
 document.getElementById("book-form").addEventListener("submit", (e) => {
   const title = document.getElementById("title").value;
@@ -13,9 +18,8 @@ document.getElementById("book-form").addEventListener("submit", (e) => {
   formData.append("author", author);
   formData.append("isbn", isbn);
 
-  const bookService = new BookService();
-  bookService.postBook(formData);
-  bookService.getBook();
+  const ui = new UI();
+  ui.addNewBook(formData);
 
   e.preventDefault();
 });
