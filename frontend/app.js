@@ -21,5 +21,17 @@ document.getElementById("book-form").addEventListener("submit", (e) => {
   const ui = new UI();
   ui.addNewBook(formData);
 
+  // Message, color to message from Bootstrap, time in seconds
+  ui.renderMessage("New Book Added", "success", 3000);
+
+  e.preventDefault();
+});
+
+document.getElementById("books-cards").addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete")) {
+    const ui = new UI();
+    ui.deleteBook(e.target.getAttribute("_id"));
+    ui.renderMessage("Book Deleted", "danger", 2000);
+  }
   e.preventDefault();
 });

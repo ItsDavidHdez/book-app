@@ -20,7 +20,7 @@ class BookService {
   }
 
   async deleteBook(id) {
-    const response = await fetch(`${this.URI}${id}`, {
+    const response = await fetch(`${this.URI}/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
